@@ -2,6 +2,8 @@ import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { APP_INTERCEPTOR } from '@nestjs/core';
+import { DefaultIfEmptyInterceptor } from './defaultIfEmpty.interceptor';
 
 @Module({
   imports: [
@@ -17,6 +19,12 @@ import { TypeOrmModule } from '@nestjs/typeorm';
     }),
   ],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [
+    AppService,
+    {
+      provide: APP_INTERCEPTOR,
+      useClass: DefaultIfEmptyInterceptor,
+    }
+  ],
 })
 export class AppModule {}
