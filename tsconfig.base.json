@@ -15,7 +15,9 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@notification-services/shared": ["libs/shared/src/index.ts"]
+      "@notification-services/shared/domain": ["libs/shared/src/lib/domain/index.ts"],
+      "@notification-services/shared/application": ["libs/shared/src/lib/application/index.ts"],
+      "@notification-services/shared/infrastructure": ["libs/shared/src/lib/infrastructure/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

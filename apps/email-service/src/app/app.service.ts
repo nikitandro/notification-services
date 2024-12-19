@@ -1,8 +1,12 @@
 import { Injectable } from '@nestjs/common';
+import { MessagePattern, Payload } from '@nestjs/microservices';
+import { INotification } from '@notification-services/shared/domain';
 
 @Injectable()
 export class AppService {
-  getData(): { message: string } {
-    return { message: 'Hello API' };
+
+  @MessagePattern('email')
+  public getNotifications(@Payload() data: INotification): void {
+    console.log(data);
   }
 }
